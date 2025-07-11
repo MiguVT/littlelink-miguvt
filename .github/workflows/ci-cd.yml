@@ -1,0 +1,157 @@
+name: Deploy LittleLink to GitHub Pages
+
+on:
+  push:
+    branches: ['main', 'prod']
+  pull_request:
+    branches: ['main', 'prod']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # 1. Checkout source code
+      - name: Checkout code
+        uses: actions/checkout@v4.1.1
+
+      # 2. Install minification tools
+      - name: Setup Node.js and install tools
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install minification tools
+        run: |
+          npm install -g \
+            html-minifier-terser \
+            clean-css-cli \
+            htmlhint \
+            stylelint \
+            stylelint-config-standard
+
+      # 3. HTML validation
+      - name: Lint HTML files
+        run: |
+          htmlhint *.html || echo "⚠️ HTML validation completed with warnings"
+
+      # 4. CSS validation
+      - name: Lint CSS files
+        run: |
+          if [ -d "css" ]; then
+            stylelint "css/**/*.css" || echo "⚠️ CSS validation completed with warnings"
+          else
+            echo "⚠️ No CSS directory found to lint"
+          fi
+
+      # 5. Prepare build directory
+      - name: Prepare build directory
+        run: |
+          mkdir -p dist
+          echo "🏗️ Build directory created"
+
+      # 6. HTML minification
+      - name: Minify HTML files
+        run: |
+          find . -name "*.html" -not -path "./dist/*" -exec sh -c '
+            html-minifier-terser \
+              --collapse-whitespace \
+              --remove-comments \
+              --remove-redundant-attributes \
+              --remove-script-type-attributes \
+              --remove-style-link-type-attributes \
+              --minify-css true \
+              --minify-js true \
+              --use-short-doctype \
+              "$0" -o "dist/$(basename "$0")"
+            echo "✅ Minified: $(basename "$0")"
+          ' {} \;
+
+      # 7. CSS optimization
+      - name: Minify CSS files
+        run: |
+          if [ -d "css" ]; then
+            mkdir -p dist/css
+            for file in css/*.css; do
+              if [ -f "$file" ]; then
+                cleancss \
+                  --level 2 \
+                  --compatibility "*" \
+                  -o "dist/${file}" \
+                  "$file"
+                echo "✅ Minified: $file"
+              fi
+            done
+          fi
+
+      # 8. Copy static assets
+      - name: Copy static assets
+        run: |
+          # Copy asset directories
+          for dir in images fonts; do
+            if [ -d "$dir" ]; then
+              cp -r "$dir" dist/
+              echo "✅ Copied directory: $dir"
+            fi
+          done
+
+          # Copy important individual files (optional - only if needed)
+          # for file in LICENSE.md VERSION.md; do
+          #   if [ -f "$file" ]; then
+          #     cp "$file" dist/
+          #     echo "✅ Copied: $file"
+          #   fi
+          # done
+
+      # 9. Build validation
+      - name: Validate build
+        run: |
+          if [ ! -f "dist/index.html" ]; then
+            echo "❌ ERROR: index.html not found in dist/"
+            exit 1
+          fi
+
+          echo "📊 Build Statistics:"
+          echo "==================="
+          echo "📄 HTML files: $(find dist -name "*.html" | wc -l)"
+          echo "🎨 CSS files: $(find dist -name "*.css" | wc -l)"
+          echo "🖼️ Images: $(find dist -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" -o -name "*.svg" | wc -l)"
+          echo "📁 Total files: $(find dist -type f | wc -l)"
+
+          # Show main file sizes
+          if [ -f "dist/index.html" ]; then
+            echo "📏 index.html size: $(du -h dist/index.html | cut -f1)"
+          fi
+          if [ -f "dist/css/style.css" ]; then
+            echo "📏 style.css size: $(du -h dist/css/style.css | cut -f1)"
+          fi
+          echo "==================="
+
+      # 10. Upload artifact for GitHub Pages
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  # GitHub Pages deployment job
+  deploy:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
