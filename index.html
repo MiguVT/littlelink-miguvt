@@ -37,6 +37,222 @@
     <!-- Author Information -->
     <meta name="author" content="MiguVT (Yara)" />
 
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000" />
+    <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT" />
+
+    <!-- Critical CSS (Inlined for faster rendering) -->
+    <style>
+      /* Critical Reset Styles */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      figure,
+      blockquote,
+      dl,
+      dd {
+        margin: 0;
+      }
+      ul,
+      ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      img,
+      picture {
+        max-width: 100%;
+        display: block;
+      }
+      input,
+      button,
+      textarea,
+      select {
+        font: inherit;
+      }
+      :focus:not(:focus-visible) {
+        outline: none;
+      }
+      :focus-visible {
+        outline: 2px solid #2457f5;
+        outline-offset: 2px;
+      }
+      a {
+        -webkit-touch-callout: none;
+        color: #2457f5;
+        text-decoration: underline;
+      }
+      a:hover {
+        color: #083bda;
+      }
+
+      /* Critical Layout & Typography */
+      :root {
+        font-size: 16px;
+        --scale-0: 1rem;
+        --scale-1: 1.25rem;
+        --scale-4: 2.441rem;
+        --scale-5: 3.052rem;
+        --spacing-m: 1.5rem;
+        --spacing-l: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-xxl: 4rem;
+      }
+      .container {
+        position: relative;
+        width: 100%;
+        max-width: 37.5rem;
+        text-align: center;
+        margin: 0 auto;
+        padding: 3rem 1.25rem 0 1.25rem;
+        box-sizing: border-box;
+      }
+      .column {
+        position: center;
+        width: 100%;
+        float: center;
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        color: #1a1a1a;
+        font-family: 'Open Sans', system-ui;
+        font-size: 1.125rem;
+        font-weight: 400;
+        line-height: 1.6;
+        min-height: 100vh;
+        text-rendering: optimizeSpeed;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      h1 {
+        margin: 0 0 0.5rem 0;
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      .container p {
+        margin: 0 0 2rem 0;
+      }
+
+      /* Critical Avatar Styles */
+      .avatar {
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        object-fit: cover;
+        background-position: center;
+        margin-bottom: var(--spacing-l);
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+      .avatar--rounded {
+        border-radius: 50%;
+      }
+
+      /* Critical Button Styles (Basic Layout) */
+      .button,
+      button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18.75rem;
+        min-height: 3rem;
+        padding: 0.75rem 1rem;
+        font-size: 1.125rem;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: normal;
+        background-color: #f5f5f5;
+        color: #000000;
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        box-sizing: border-box;
+        margin-bottom: 1rem;
+        text-align: center;
+        line-height: 1.3;
+      }
+      .icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-right: 0.5rem;
+        flex-shrink: 0;
+      }
+
+      /* Responsive */
+      @media (min-width: 25rem) {
+        .container {
+          width: 85%;
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+      @media (min-width: 34.375rem) {
+        .container {
+          width: 80%;
+        }
+      }
+      @media (max-width: 34.375rem) {
+        h1 {
+          font-size: var(--scale-4);
+        }
+        body {
+          font-size: var(--scale-0);
+        }
+        .container p {
+          font-size: var(--scale-0);
+        }
+      }
+    </style>
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="images/avatar.png" as="image" type="image/png" />
+    <link rel="preload" href="images/avatar@2x.png" as="image" type="image/png" />
+    <link
+      rel="preload"
+      href="fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-600.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- DNS Prefetch for external domains -->
+    <link rel="dns-prefetch" href="//discord.miguvt.com" />
+    <link rel="dns-prefetch" href="//github.com" />
+    <link rel="dns-prefetch" href="//instagram.com" />
+    <link rel="dns-prefetch" href="//ko-fi.com" />
+    <link rel="dns-prefetch" href="//last.fm" />
+    <link rel="dns-prefetch" href="//patreon.com" />
+    <link rel="dns-prefetch" href="//steamcommunity.com" />
+    <link rel="dns-prefetch" href="//tiktok.com" />
+    <link rel="dns-prefetch" href="//twitch.tv" />
+    <link rel="dns-prefetch" href="//twitter.com" />
+    <link rel="dns-prefetch" href="//youtube.com" />
+    <link rel="dns-prefetch" href="//blog.miguvt.com" />
+    <link rel="dns-prefetch" href="//tienda.miguvt.com" />
+
     <!-- Open Graph -->
     <meta property="og:title" content="MiguVT - VTuber Española" />
     <meta property="og:description" content="Gaming, VRChat y buena onda." />
@@ -50,15 +266,23 @@
     <meta name="twitter:description" content="Gaming, VRChat y buena onda." />
     <meta name="twitter:image" content="https://links.miguvt.com/images/avatar.png" />
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/brands.css" />
-
-    <!-- LittleLink Extended Stylesheet (Optional) -->
-    <!-- <link rel="stylesheet" href="css/brands-extended.css"> -->
-    <!-- Learn more at https://github.com/sethcottle/littlelink-extended.
-         Remove comments if you've added LittleLink Extended dependencies -->
+    <!-- Stylesheets (Deferred for non-blocking) -->
+    <link
+      rel="preload"
+      href="css/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="css/brands.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="css/style.css" />
+      <link rel="stylesheet" href="css/brands.css" />
+    </noscript>
   </head>
 
   <body>
@@ -77,6 +301,8 @@
           src="images/avatar.png"
           srcset="images/avatar@2x.png 2x"
           alt="Avatar de MiguVT, VTuber española"
+          loading="eager"
+          fetchpriority="high"
         />
 
         <!-- Replace with your name or brand -->
@@ -98,6 +324,7 @@
             aria-hidden="true"
             src="images/icons/discord.svg"
             alt="Discord Logo"
+            loading="lazy"
           />Discord</a
         >
 
