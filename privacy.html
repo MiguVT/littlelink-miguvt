@@ -7,78 +7,345 @@
   - theme-dark: Forces dark theme
 -->
 
-<html class="theme-auto" lang="en"> <!-- Update `class="theme-auto"` with your preference -->
+<html class="theme-auto" lang="es">
+  <!-- Theme Options: theme-auto (follows system), theme-light, theme-dark -->
 
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Page Title - Change this to your name/brand (50-60 characters recommended) -->
-    <title>Privacy Policy | LittleLink</title>
-    <link rel="icon" type="image/x-icon" href="/images/avatar.png"> <!-- Update this with your own favicon -->
-
+    <title>Política de Privacidad | MiguVT Links</title>
+    <link rel="icon" type="image/x-icon" href="/images/avatar.webp" />
+    <!-- Update this with your own favicon -->
 
     <!-- Meta Description - Write a description (150-160 characters recommended) -->
-    <meta name="description" content="Privacy policy and data collection information for LittleLink">
-    <meta name="robots" content="noindex"> <!-- Since this is a utility page -->
+    <meta
+      name="description"
+      content="Política de privacidad de MiguVT - No recopilamos datos personales ni utilizamos cookies de seguimiento"
+    />
+    <meta name="robots" content="noindex" />
+    <!-- Since this is a utility page -->
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/brands.css">
+    <!-- Critical CSS for Privacy Page -->
+    <style>
+      /* Critical Reset Styles */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      figure,
+      blockquote,
+      dl,
+      dd {
+        margin: 0;
+      }
+      ul,
+      ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      img,
+      picture {
+        max-width: 100%;
+        display: block;
+      }
+      input,
+      button,
+      textarea,
+      select {
+        font: inherit;
+      }
+      :focus:not(:focus-visible) {
+        outline: none;
+      }
+      :focus-visible {
+        outline: 2px solid #2457f5;
+        outline-offset: 2px;
+      }
+      a {
+        -webkit-touch-callout: none;
+        color: #2457f5;
+        text-decoration: underline;
+      }
+      a:hover {
+        color: #083bda;
+      }
 
+      /* Critical Layout & Typography */
+      :root {
+        font-size: 16px;
+        --scale-0: 1rem; /* 16px */
+        --scale-1: 1.25rem; /* 20px */
+        --scale-2: 1.563rem; /* 25px */
+        --scale-3: 1.953rem; /* 31px */
+        --scale-4: 2.441rem; /* 39px */
+        --scale-5: 3.052rem; /* 49px */
+        --spacing-xs: 0.5rem; /* 8px */
+        --spacing-s: 1rem; /* 16px */
+        --spacing-m: 1.5rem; /* 24px */
+        --spacing-l: 2rem; /* 32px */
+        --spacing-xl: 3rem; /* 48px */
+        --spacing-xxl: 4rem; /* 64px */
+      }
+
+      .container-left {
+        position: relative;
+        width: 100%;
+        max-width: 37.5rem;
+        text-align: left;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        color: #1a1a1a;
+        font-family: 'Open Sans', system-ui;
+        font-size: var(--scale-1); /* 20px */
+        font-weight: 400;
+        line-height: 1.6;
+        min-height: 100vh;
+        text-rendering: optimizeSpeed;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      h1 {
+        margin: 0 0 var(--spacing-m) 0;
+        font-size: var(--scale-5); /* ~49px */
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+
+      h2 {
+        font-size: var(--scale-3);
+        font-weight: 700;
+        margin-bottom: var(--spacing-m);
+      }
+
+      h3 {
+        font-size: var(--scale-2);
+        font-weight: 600;
+        margin: var(--spacing-l) 0 var(--spacing-s) 0;
+      }
+
+      nav {
+        margin: var(--spacing-l) 0;
+        text-align: left;
+      }
+
+      section {
+        margin: var(--spacing-xl) 0;
+        text-align: left;
+      }
+
+      ul {
+        list-style: disc;
+        padding-left: var(--spacing-l);
+        margin: 0 0 var(--spacing-m) 0;
+      }
+
+      ul li {
+        margin-bottom: var(--spacing-xs);
+      }
+
+      footer {
+        margin: var(--spacing-xxl) 0;
+        font-size: var(--scale-0);
+      }
+
+      /* Critical Theme System */
+      /* Dark theme */
+      :root.theme-dark {
+        color-scheme: dark;
+      }
+      :root.theme-dark :focus-visible {
+        outline: 2px solid #4899f7;
+        outline-offset: 2px;
+      }
+      :root.theme-dark body {
+        background-color: #121212;
+        color: #ffffff;
+      }
+      :root.theme-dark a:not(.button) {
+        color: #4899f7;
+      }
+      :root.theme-dark a:not(.button):hover {
+        color: #7ab8ff;
+      }
+
+      /* Auto theme */
+      :root.theme-auto {
+        color-scheme: light dark;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root.theme-auto body {
+          background-color: #121212;
+          color: #ffffff;
+        }
+        :root.theme-auto :focus-visible {
+          outline: 2px solid #4899f7;
+          outline-offset: 2px;
+        }
+        :root.theme-auto a:not(.button) {
+          color: #4899f7;
+        }
+        :root.theme-auto a:not(.button):hover {
+          color: #7ab8ff;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 34.375rem) {
+        /* 550px */
+        h1 {
+          font-size: var(--scale-4);
+        }
+        body {
+          font-size: var(--scale-0);
+        }
+        h2 {
+          font-size: var(--scale-2);
+        }
+        h3 {
+          font-size: var(--scale-1);
+        }
+        section {
+          margin: var(--spacing-l) 0;
+        }
+        footer {
+          margin: var(--spacing-xl) 0;
+        }
+      }
+    </style>
+
+    <!-- Stylesheets (Deferred for non-blocking) -->
+    <link
+      rel="preload"
+      href="css/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="css/style.css" />
+    </noscript>
   </head>
 
   <body>
-    <div class="container-left" role="main">
+    <main class="container-left">
       <div class="column">
         <nav role="navigation">
-          <a href="index.html" aria-label="Back to homepage">← Back to main page</a>
+          <a href="index.html" aria-label="Volver a la página principal"
+            >← Volver a la página principal</a
+          >
         </nav>
 
-        <h1>Privacy Overview</h1>
+        <h1>Política de Privacidad</h1>
 
-        <section aria-labelledby="analytics-heading">
-          <h2 id="analytics-heading">Analytics</h2>
-          <p>The services contained in this section enable the Owner to monitor and analyze web traffic and can be used to keep track of User behavior.</p>
+        <section aria-labelledby="no-data-collection-heading">
+          <h2 id="no-data-collection-heading">🔒 Privacidad Total</h2>
+          <p>
+            <strong
+              >Esta página web NO recopila, almacena ni procesa ningún tipo de datos
+              personales.</strong
+            >
+          </p>
+          <p>
+            MiguVT Links es una página estática que simplemente proporciona enlaces a las redes
+            sociales y plataformas de MiguVT. No utilizamos cookies de seguimiento, análisis web, ni
+            ningún sistema que recopile información sobre los visitantes.
+          </p>
+        </section>
 
-          <h3>Example LLC</h3>
-          <ul role="list">
-            <li>Personal Data: various types of Data as specified in the privacy policy of the service</li>
-            <li><a href="https://example.com/privacy/" target="_blank" rel="noopener">Privacy Policy</a></li>
+        <section aria-labelledby="what-we-dont-do-heading">
+          <h2 id="what-we-dont-do-heading">❌ Lo que NO hacemos</h2>
+          <ul>
+            <li>✗ No recopilamos direcciones IP</li>
+            <li>✗ No usamos cookies de seguimiento</li>
+            <li>✗ No guardamos información del navegador</li>
+            <li>✗ No utilizamos Google Analytics ni herramientas similares</li>
+            <li>✗ No vendemos ni compartimos datos (porque no tenemos ninguno)</li>
+            <li>✗ No creamos perfiles de usuario</li>
+            <li>✗ No enviamos spam ni emails no solicitados</li>
           </ul>
         </section>
 
-        <section aria-labelledby="external-content-heading">
-          <h2 id="external-content-heading">External Content</h2>
-          <p>This type of service allows you to view content hosted on external platforms directly from the pages of this website and interact with them.</p>
-          <p>This type of service might still collect web traffic data for the pages where the service is installed, even when Users do not use it.</p>
-
-          <h3>Example LLC</h3>
-          <ul role="list">
-            <li>Personal Data: Usage Data; various types of Data as specified in the privacy policy of the service</li>
-            <li><a href="https://example.com/privacy/" target="_blank" rel="noopener">Privacy Policy</a></li>
+        <section aria-labelledby="external-links-heading">
+          <h2 id="external-links-heading">🔗 Enlaces Externos</h2>
+          <p>
+            Esta página contiene enlaces a plataformas externas como Discord, Twitch, YouTube, etc.
+            Cuando haces clic en estos enlaces:
+          </p>
+          <ul>
+            <li>✓ Saldrás de esta página web</li>
+            <li>✓ Las políticas de privacidad de esas plataformas se aplicarán</li>
+            <li>✓ No compartimos ninguna información contigo con esas plataformas</li>
+            <li>✓ Tu privacidad dependerá de las políticas de cada plataforma</li>
           </ul>
+          <p>Te recomendamos revisar las políticas de privacidad de las plataformas que visites.</p>
         </section>
 
         <section aria-labelledby="hosting-heading">
-          <h2 id="hosting-heading">Hosting and Infrastructure</h2>
-          <p>This type of service has the purpose of hosting Data and files that enable this website to exist.</p>
-          <p>Some services among those listed below, if any, may work through geographically distributed servers, making it difficult to determine the actual location where the Personal Data are stored.</p>
+          <h2 id="hosting-heading">🌐 Hosting y Infraestructura</h2>
+          <p>
+            Esta página está alojada como un sitio web estático. El proveedor de hosting puede tener
+            acceso a logs básicos del servidor (como direcciones IP para fines de seguridad), pero
+            nosotros no tenemos acceso a esta información ni la utilizamos para ningún propósito.
+          </p>
+          <p>Si tienes preguntas sobre el hosting, puedes contactarnos directamente.</p>
+        </section>
 
-          <h3>Example LLC</h3>
-          <ul role="list">
-            <li>Personal Data: various types of Data as specified in the privacy policy of the service</li>
-            <li><a href="https://example.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+        <section aria-labelledby="contact-heading">
+          <h2 id="contact-heading">📧 Contacto</h2>
+          <p>
+            Si tienes alguna pregunta sobre esta política de privacidad, puedes contactar a MiguVT a
+            través de:
+          </p>
+          <ul>
+            <li>Email: <a href="mailto:contacto@miguvt.com">contacto@miguvt.com</a></li>
+            <li>
+              Discord:
+              <a href="https://discord.miguvt.com" target="_blank" rel="noopener"
+                >Servidor oficial de MiguVT</a
+              >
+            </li>
           </ul>
         </section>
 
+        <section aria-labelledby="updates-heading">
+          <h2 id="updates-heading">🔄 Actualizaciones</h2>
+          <p>Esta política de privacidad puede actualizarse ocasionalmente.</p>
+          <p><strong>Última actualización:</strong> 11 de julio de 2025</p>
+        </section>
+
         <footer>
-          <p>Build your own by forking <a href="https://littlelink.io" target="_blank" rel="noopener">LittleLink.</a></p>
+          <p>
+            <a href="index.html">← Volver a MiguVT Links</a> | Fork de
+            <a href="https://github.com/sethcottle/littlelink" target="_blank" rel="noopener"
+              >LittleLink</a
+            >
+            |
+            <a href="https://github.com/MiguVT/littlelink-miguvt" target="_blank" rel="noopener"
+              >Código fuente</a
+            >
+          </p>
         </footer>
       </div>
-    </div>
-
+    </main>
   </body>
-
 </html>
