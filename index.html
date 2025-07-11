@@ -19,6 +19,16 @@
     <link rel="icon" type="image/x-icon" href="/images/avatar.webp" />
     <!-- Update this with your own favicon -->
 
+    <!-- Preload LCP Avatar (Critical for performance) -->
+    <link
+      rel="preload"
+      href="images/avatar.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high"
+    />
+    <link rel="preload" href="images/avatar@2x.webp" as="image" type="image/webp" />
+
     <!-- Meta Description - Write a description (150-160 characters recommended) -->
     <meta
       name="description"
@@ -297,8 +307,6 @@
     </style>
 
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="images/avatar.webp" as="image" type="image/webp" />
-    <link rel="preload" href="images/avatar@2x.webp" as="image" type="image/webp" />
     <link
       rel="preload"
       href="fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.woff2"
@@ -375,10 +383,11 @@
         <img
           class="avatar avatar--rounded"
           src="images/avatar.webp"
-          srcset="images/avatar@2x.webp 2x"
+          srcset="images/avatar.webp 128w, images/avatar@2x.webp 256w"
+          sizes="(max-width: 550px) 96px, 128px"
           alt="Avatar de MiguVT, VTuber española"
-          loading="eager"
           fetchpriority="high"
+          decoding="async"
         />
 
         <!-- Replace with your name or brand -->
